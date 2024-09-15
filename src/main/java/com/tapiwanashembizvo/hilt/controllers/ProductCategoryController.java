@@ -1,9 +1,9 @@
+/*
 package com.tapiwanashembizvo.hilt.controllers;
 
 
 import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
-import com.tapiwanashembizvo.hilt.dto.ProductCategoryDto;
-import com.tapiwanashembizvo.hilt.services.ProductCategoryService;
+import com.tapiwanashembizvo.hilt.services.ProductActivityService;
 import com.tapiwanashembizvo.hilt.services.core.BusinessActivityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,21 +11,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/business-units")
+@RequestMapping("api/v1/product-categories")
 
-public class BusinessUnitController {
+public class ProductCategoryController {
 
 
-    private final BusinessActivityService businessActivityService;
-    private final ProductCategoryService productCategoryService;
+    private final ProductActivityService productActivityService;
 
-    public BusinessUnitController(BusinessActivityService businessActivityService, ProductCategoryService productCategoryService) {
-        this.businessActivityService = businessActivityService;
-        this.productCategoryService = productCategoryService;
+    public ProductCategoryController(ProductActivityService productActivityService) {
+        this.productActivityService = productActivityService;
     }
 
     @GetMapping
-    public ResponseEntity<List<BusinessUnitDto>> getBusinessUnits() {
+    public ResponseEntity<List<BusinessUnitDto>> getAllProductCatego() {
 
         return ResponseEntity.ok(businessActivityService.getAllBusinessUnits());
     }
@@ -34,12 +32,6 @@ public class BusinessUnitController {
     public  ResponseEntity<BusinessUnitDto> getSingleBusinessUnit(@PathVariable Integer id){
 
         return  ResponseEntity.ok(businessActivityService.getSingleBusinessUnit(id));
-    }
-
-    @GetMapping("/{id}/product-categories")
-    public  ResponseEntity<List<ProductCategoryDto>> getCategoriesForBU(@PathVariable Integer id){
-
-        return  ResponseEntity.ok(productCategoryService.getCategoriesForBu(id));
     }
 
 
@@ -65,3 +57,4 @@ public class BusinessUnitController {
 
 }
 
+*/

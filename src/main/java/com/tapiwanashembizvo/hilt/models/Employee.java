@@ -10,7 +10,8 @@ import jakarta.persistence.*;
 public class Employee {
 
     @Id
-    private  Integer employeeId;
+    @Column(name = "employee_id")
+    private  Integer id;
     private String employeeNumber;
     private  String employeeFirstName;
     private  String employeeLastName;
@@ -25,11 +26,8 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer employeeId, String employeeNumber,
-                    String employeeFirstName, String employeeLastName,
-                    String employeePhoneNumber, String employeeEmailAddress,
-                    BusinessUnit businessUnit) {
-        this.employeeId = employeeId;
+    public Employee(Integer id, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, BusinessUnit businessUnit) {
+        this.id = id;
         this.employeeNumber = employeeNumber;
         this.employeeFirstName = employeeFirstName;
         this.employeeLastName = employeeLastName;
@@ -38,12 +36,12 @@ public class Employee {
         this.businessUnit = businessUnit;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmployeeNumber() {

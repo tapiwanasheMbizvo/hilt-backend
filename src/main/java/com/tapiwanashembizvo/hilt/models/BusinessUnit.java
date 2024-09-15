@@ -12,7 +12,8 @@ import java.util.List;
 
 public class BusinessUnit {
     @Id
-    private Integer businessId;
+    @Column(name = "business_id")
+    private Integer id;
     private String businessName;
     private String businessAddress;
     private String businessEmail;
@@ -32,6 +33,10 @@ public class BusinessUnit {
     @JsonManagedReference
     private List<Employee> employees;
 
+    @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<ProductCategory> productCategories;
+
 
   public List<Branch> getBranches() {
         return branches;
@@ -41,12 +46,12 @@ public class BusinessUnit {
         this.branches = branches;
     }
 
-    public Integer getBusinessId() {
-        return businessId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBusinessId(Integer businessId) {
-        this.businessId = businessId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBusinessName() {
@@ -119,5 +124,13 @@ public class BusinessUnit {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public List<ProductCategory> getProductCategories() {
+        return productCategories;
+    }
+
+    public void setProductCategories(List<ProductCategory> productCategories) {
+        this.productCategories = productCategories;
     }
 }
