@@ -9,5 +9,5 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BusinessUnitService {
 
-    private final BusinessUnitRepository businessUnitRepository;
+
 }
