@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: hilt-backend
+  datasource:
+    url: ${HILT_BACK_END_DB_URL}
+    username: ${HILT_DB_USER}
+    password: ${HILT_DB_PSWD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    url: ${HILT_BACK_END_DB_URL}
+    user: ${HILT_DB_USER}
+    password: ${HILT_DB_PSWD}
+    locations: classpath:db/migration
+
+
+
+  profiles:
+    active: dev
+
+  cloud:
+    config:
+      label: latest
+
+  config:
+    import: configserver:http://localhost:8888
+server:
+  port: 8785
