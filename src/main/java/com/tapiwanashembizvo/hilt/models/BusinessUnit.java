@@ -3,12 +3,8 @@ package com.tapiwanashembizvo.hilt.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,14 +26,18 @@ public class BusinessUnit {
 
     @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<BusinessBranch> branches;
+    private List<Branch> branches;
+
+    @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Employee> employees;
 
 
-  public List<BusinessBranch> getBranches() {
+  public List<Branch> getBranches() {
         return branches;
     }
 
-    public void setBranches(List<BusinessBranch> branches) {
+    public void setBranches(List<Branch> branches) {
         this.branches = branches;
     }
 
@@ -111,5 +111,13 @@ public class BusinessUnit {
 
     public void setDeletedOn(LocalDateTime deletedOn) {
         this.deletedOn = deletedOn;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

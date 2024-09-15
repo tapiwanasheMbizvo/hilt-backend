@@ -1,34 +1,48 @@
 package com.tapiwanashembizvo.hilt.dto;
 
-import com.tapiwanashembizvo.hilt.models.BusinessBranch;
-import lombok.*;
+import com.tapiwanashembizvo.hilt.models.Branch;
+import com.tapiwanashembizvo.hilt.models.Employee;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 public class BusinessUnitDto {
-
+    private Integer businessId;
     private String businessName;
     private String businessAddress;
     private String businessEmail;
     private String businessPhone;
     private  String businessWebsite;
 
-    private List<BusinessBranch> branches;
+    private List<Branch> branches;
     private Boolean isDeleted;
     private LocalDateTime deletedOn;
 
-    public BusinessUnitDto(String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<BusinessBranch> branches) {
+    private List<Employee> employees;
+
+    public BusinessUnitDto(Integer businessId, String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<Branch> branches, Boolean isDeleted, LocalDateTime deletedOn, List<Employee> employees) {
+        this.businessId = businessId;
         this.businessName = businessName;
         this.businessAddress = businessAddress;
         this.businessEmail = businessEmail;
         this.businessPhone = businessPhone;
         this.businessWebsite = businessWebsite;
         this.branches = branches;
+        this.isDeleted = isDeleted;
+        this.deletedOn = deletedOn;
+        this.employees = employees;
     }
 
     public BusinessUnitDto() {
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public String getBusinessName() {
@@ -71,11 +85,11 @@ public class BusinessUnitDto {
         this.businessWebsite = businessWebsite;
     }
 
-    public List<BusinessBranch> getBranches() {
+    public List<Branch> getBranches() {
         return branches;
     }
 
-    public void setBranches(List<BusinessBranch> branches) {
+    public void setBranches(List<Branch> branches) {
         this.branches = branches;
     }
 
@@ -95,5 +109,11 @@ public class BusinessUnitDto {
         this.deletedOn = deletedOn;
     }
 
+    public Integer getBusinessId() {
+        return businessId;
+    }
 
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
+    }
 }
