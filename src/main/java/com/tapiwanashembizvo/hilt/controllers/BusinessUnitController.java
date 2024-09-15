@@ -3,7 +3,6 @@ package com.tapiwanashembizvo.hilt.controllers;
 
 import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.services.core.BusinessActivityService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
