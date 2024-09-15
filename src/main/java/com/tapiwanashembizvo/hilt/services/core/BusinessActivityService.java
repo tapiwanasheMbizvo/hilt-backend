@@ -3,29 +3,25 @@ package com.tapiwanashembizvo.hilt.services.core;
 
 import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.mappers.BusinessUnitMapper;
-import com.tapiwanashembizvo.hilt.models.BusinessUnit;
 import com.tapiwanashembizvo.hilt.repositories.BusinessUnitRepository;
 import com.tapiwanashembizvo.hilt.services.core.exception.BusinessNameEmailCombinationExistsException;
-import com.tapiwanashembizvo.hilt.services.messaging.BusinessCoreMessaging;
 import com.tapiwanashembizvo.hilt.services.messaging.BusinessMessageSender;
 import com.tapiwanashembizvo.hilt.services.messaging.models.BusinessMessage;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
-public class BusinessCreationService {
+public class BusinessActivityService {
 
     private final BusinessUnitRepository businessUnitRepository;
     private final BusinessUnitMapper businessUnitMapper;
     private final BusinessMessageSender businessMessageSender;
 
 
-    public BusinessCreationService(BusinessUnitRepository businessUnitRepository,
+    public BusinessActivityService(BusinessUnitRepository businessUnitRepository,
                                    BusinessUnitMapper businessUnitMapper,
                                    BusinessMessageSender businessMessageSender) {
         this.businessUnitRepository = businessUnitRepository;
@@ -56,5 +52,11 @@ public class BusinessCreationService {
             throw new BusinessNameEmailCombinationExistsException("Business with that name and Email combination already exists");
         }
 
+    }
+
+    public List<BusinessUnitDto> getAllBusinessUnits(){
+
+        return  businessUnitRepository.findAll()
+                .stream().map(businessUnitMapper::modelToDto).collect(Collectors.toList());
     }
 }
