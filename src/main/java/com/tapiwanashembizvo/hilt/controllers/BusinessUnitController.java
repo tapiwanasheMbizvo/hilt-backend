@@ -5,9 +5,7 @@ import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.services.core.BusinessActivityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +24,35 @@ public class BusinessUnitController {
     @GetMapping
     public ResponseEntity<List<BusinessUnitDto>> getBusinessUnits() {
 
-
         return ResponseEntity.ok(businessActivityService.getAllBusinessUnits());
     }
+
+    @GetMapping("/{id}")
+    public  ResponseEntity<BusinessUnitDto> getSingleBusinessUnit(@PathVariable Integer id){
+
+        return  ResponseEntity.ok(businessActivityService.getSingleBusinessUnit(id));
+    }
+
+
+    @PostMapping
+    public  ResponseEntity<BusinessUnitDto> saveOneBusinessUnit(@RequestBody BusinessUnitDto businessUnitDto){
+
+        return  ResponseEntity.ok(businessActivityService.createBusinessUnit(businessUnitDto));
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void  deleteBusinessUnit(@PathVariable Integer id){
+
+        businessActivityService.deleteBusinessUnit(id);
+    }
+
+    @PutMapping
+    public  ResponseEntity<BusinessUnitDto> updateBusinessUnit(@RequestBody BusinessUnitDto businessUnitDto){
+
+        return  ResponseEntity.ok(businessActivityService.updateBusinessUnit(businessUnitDto));
+    }
+
+
 }
+

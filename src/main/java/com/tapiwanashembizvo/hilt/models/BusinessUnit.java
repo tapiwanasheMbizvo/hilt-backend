@@ -7,11 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "business_unit")
+
 public class BusinessUnit {
     @Id
     private Integer businessId;
@@ -20,12 +22,18 @@ public class BusinessUnit {
     private String businessEmail;
     private String businessPhone;
     private  String businessWebsite;
+
+    private Boolean isDeleted;
+
+    private LocalDateTime deletedOn;
+
+
     @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<BusinessBranch> branches;
 
 
-    public List<BusinessBranch> getBranches() {
+  public List<BusinessBranch> getBranches() {
         return branches;
     }
 
@@ -79,5 +87,29 @@ public class BusinessUnit {
 
     public void setBusinessWebsite(String businessWebsite) {
         this.businessWebsite = businessWebsite;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public LocalDateTime getDeleteOn() {
+        return deletedOn;
+    }
+
+    public void setDeleteOn(LocalDateTime deleteOn) {
+        this.deletedOn = deleteOn;
+    }
+
+    public LocalDateTime getDeletedOn() {
+        return deletedOn;
+    }
+
+    public void setDeletedOn(LocalDateTime deletedOn) {
+        this.deletedOn = deletedOn;
     }
 }

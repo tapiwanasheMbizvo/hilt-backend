@@ -10,7 +10,9 @@ import com.tapiwanashembizvo.hilt.services.messaging.BusinessMessageSender;
 import com.tapiwanashembizvo.hilt.services.messaging.models.BusinessMessage;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -30,7 +32,7 @@ public class BusinessActivityService {
         this.businessMessageSender = businessMessageSender;
     }
 
-    public BusinessUnitDto createBusinessUnit(BusinessUnitDto businessUnitDto) throws BusinessNameEmailCombinationExistsException {
+    public BusinessUnitDto createBusinessUnit(BusinessUnitDto businessUnitDto) {
 
 
         var byBusinessNameAndBusinessEmail = businessUnitRepository
@@ -50,15 +52,57 @@ public class BusinessActivityService {
             return businessUnitMapper.modelToDto(savedBusinessUnit);
 
         } else {
-            throw new BusinessNameEmailCombinationExistsException("Business with that name and Email combination already exists");
+            throw new RuntimeException("Business with that name and Email combination already exists");
         }
 
     }
 
-    public List<BusinessUnitDto> getAllBusinessUnits(){
+    public List<BusinessUnitDto> getAllBusinessUnits() {
 
-        return  businessUnitRepository.findAll()
+        return businessUnitRepository.findAll()
                 .stream().map(businessUnitMapper::modelToDto).collect(Collectors.toList());
     }
 
+    public BusinessUnitDto updateBusinessUnit(BusinessUnitDto businessUnitDto) {
+
+
+        var byBusinessNameAndBusinessEmail = businessUnitRepository
+                .findByBusinessNameAndBusinessEmail(
+                        businessUnitDto.getBusinessEmail(), businessUnitDto.getBusinessName()
+                );
+
+        if (byBusinessNameAndBusinessEmail.isPresent()) {
+            var savedBusinessUnit = businessUnitRepository.save(businessUnitMapper.dtoModel(businessUnitDto));
+        }
+
+        throw new RuntimeException("The name and email combination does not match any BU ");
+    }
+
+    public void deleteBusinessUnit(Integer id) {
+        Optional<BusinessUnit> optionalBusinessUnit = businessUnitRepository.findById(id);
+
+        if (optionalBusinessUnit.isPresent()) {
+
+            BusinessUnit businessUnit = optionalBusinessUnit.get();
+            businessUnit.setDeleted(true);
+            businessUnit.setDeleteOn(LocalDateTime.now());
+            businessUnitRepository.save(businessUnit);
+
+        }
+        throw new RuntimeException("BU Not found for id");
+    }
+
+
+    public BusinessUnitDto getSingleBusinessUnit(Integer id) {
+
+        Optional<BusinessUnit> optionalBusinessUnit = businessUnitRepository.findById(id);
+
+        if (optionalBusinessUnit.isPresent()) {
+
+            return businessUnitMapper.modelToDto(optionalBusinessUnit.get());
+        }
+        throw new RuntimeException("BU Not found for id");
+
+
+    }
 }
