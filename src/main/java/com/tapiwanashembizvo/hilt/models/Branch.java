@@ -1,25 +1,35 @@
-package com.tapiwanashembizvo.hilt.dto;
-
-import com.tapiwanashembizvo.hilt.models.BusinessUnit;
+package com.tapiwanashembizvo.hilt.models;
 
 
-public class BusinessBranchDto {
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "business_branches")
+public class Branch {
+
+    @Id
     private  Integer branchId;
     private String branchName;
     private  String branchLocation;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "business_unit_id")
+    @JsonBackReference
     private BusinessUnit businessUnit;
 
-    public BusinessBranchDto() {
+    public Branch() {
     }
 
-    public BusinessBranchDto(Integer branchId, String branchName, String branchLocation, BusinessUnit businessUnit) {
+    public Branch(Integer branchId, String branchName, String branchLocation, BusinessUnit businessUnit) {
         this.branchId = branchId;
         this.branchName = branchName;
         this.branchLocation = branchLocation;
         this.businessUnit = businessUnit;
     }
+
+
 
     public Integer getBranchId() {
         return branchId;
