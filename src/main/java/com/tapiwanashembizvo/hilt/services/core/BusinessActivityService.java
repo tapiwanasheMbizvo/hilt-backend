@@ -3,6 +3,7 @@ package com.tapiwanashembizvo.hilt.services.core;
 
 import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.mappers.BusinessUnitMapper;
+import com.tapiwanashembizvo.hilt.models.BusinessUnit;
 import com.tapiwanashembizvo.hilt.repositories.BusinessUnitRepository;
 import com.tapiwanashembizvo.hilt.services.core.exception.BusinessNameEmailCombinationExistsException;
 import com.tapiwanashembizvo.hilt.services.messaging.BusinessMessageSender;
@@ -59,4 +60,5 @@ public class BusinessActivityService {
         return  businessUnitRepository.findAll()
                 .stream().map(businessUnitMapper::modelToDto).collect(Collectors.toList());
     }
+
 }

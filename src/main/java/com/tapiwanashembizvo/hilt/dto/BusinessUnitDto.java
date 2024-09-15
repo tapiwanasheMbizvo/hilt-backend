@@ -1,6 +1,9 @@
 package com.tapiwanashembizvo.hilt.dto;
 
+import com.tapiwanashembizvo.hilt.models.BusinessBranch;
 import lombok.*;
+
+import java.util.List;
 
 
 public class BusinessUnitDto {
@@ -10,16 +13,26 @@ public class BusinessUnitDto {
     private String businessEmail;
     private String businessPhone;
     private  String businessWebsite;
+    private List<BusinessBranch> branches;
 
-    public BusinessUnitDto(String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite) {
+    public BusinessUnitDto(String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<BusinessBranch> branches) {
         this.businessName = businessName;
         this.businessAddress = businessAddress;
         this.businessEmail = businessEmail;
         this.businessPhone = businessPhone;
         this.businessWebsite = businessWebsite;
+        this.branches = branches;
     }
 
     public BusinessUnitDto() {
+    }
+
+    public List<BusinessBranch> getBranches() {
+        return branches;
+    }
+
+    public void setBranches(List<BusinessBranch> branches) {
+        this.branches = branches;
     }
 
     public String getBusinessName() {

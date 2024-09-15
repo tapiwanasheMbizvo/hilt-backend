@@ -1,6 +1,7 @@
 package com.tapiwanashembizvo.hilt.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,18 @@ public class BusinessUnit {
     private String businessEmail;
     private String businessPhone;
     private  String businessWebsite;
+    @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<BusinessBranch> branches;
+
+
+    public List<BusinessBranch> getBranches() {
+        return branches;
+    }
+
+    public void setBranches(List<BusinessBranch> branches) {
+        this.branches = branches;
+    }
 
     public Integer getBusinessId() {
         return businessId;

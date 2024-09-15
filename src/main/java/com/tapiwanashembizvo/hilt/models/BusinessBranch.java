@@ -1,6 +1,7 @@
 package com.tapiwanashembizvo.hilt.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,8 +16,9 @@ public class BusinessBranch {
     private String branchName;
     private  String branchLocation;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "business_unit_id")
+    @JsonBackReference
     private BusinessUnit businessUnit;
 
     public BusinessBranch() {
@@ -28,6 +30,8 @@ public class BusinessBranch {
         this.branchLocation = branchLocation;
         this.businessUnit = businessUnit;
     }
+
+
 
     public Integer getBranchId() {
         return branchId;
