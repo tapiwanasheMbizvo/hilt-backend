@@ -1,20 +1,33 @@
 package com.tapiwanashembizvo.hilt.dto;
 
 
+import com.tapiwanashembizvo.hilt.models.Product;
+
+import java.util.List;
+
 public class ProductCategoryDto {
 
     private  Integer id;
     private String categoryName;
     private  String categoryDesc;
 
+    private List<Product> products;
     public ProductCategoryDto() {
     }
 
-    public ProductCategoryDto(Integer categoryId, String categoryName, String categoryDesc) {
-        this.id = categoryId;
+    public ProductCategoryDto(Integer id, String categoryName, String categoryDesc, List<Product> products) {
+        this.id = id;
         this.categoryName = categoryName;
         this.categoryDesc = categoryDesc;
+        this.products = products;
+    }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public Integer getId() {

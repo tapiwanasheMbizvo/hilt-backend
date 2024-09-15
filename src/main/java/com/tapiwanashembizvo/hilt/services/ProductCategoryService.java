@@ -23,4 +23,11 @@ public class ProductCategoryService {
          return  productCategoryRepository.findByBusinessUnitId(businessUnitId).get()
                  .stream().map(productCategoryMapper::modelToDto).collect(Collectors.toList());
     }
+
+    public  ProductCategoryDto getCategoryForBu(Integer id, Integer catId) {
+
+        return  productCategoryMapper.modelToDto(productCategoryRepository.findById(catId).get());
+
+
+    }
 }

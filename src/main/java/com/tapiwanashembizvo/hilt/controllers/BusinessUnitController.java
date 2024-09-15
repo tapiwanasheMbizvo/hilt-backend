@@ -3,6 +3,7 @@ package com.tapiwanashembizvo.hilt.controllers;
 
 import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.dto.ProductCategoryDto;
+import com.tapiwanashembizvo.hilt.dto.ProductDto;
 import com.tapiwanashembizvo.hilt.services.ProductCategoryService;
 import com.tapiwanashembizvo.hilt.services.core.BusinessActivityService;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,12 @@ public class BusinessUnitController {
     public  ResponseEntity<List<ProductCategoryDto>> getCategoriesForBU(@PathVariable Integer id){
 
         return  ResponseEntity.ok(productCategoryService.getCategoriesForBu(id));
+    }
+
+    @GetMapping("/{id}/product-categories/{catId}")
+    public  ResponseEntity<ProductCategoryDto> getCategoryForBU(@PathVariable Integer id, @PathVariable Integer catId){
+
+        return  ResponseEntity.ok(productCategoryService.getCategoryForBu(id, catId));
     }
 
 
