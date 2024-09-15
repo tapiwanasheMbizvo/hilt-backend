@@ -1,0 +1,3 @@
+ALTER TABLE business_unit
+ADD COLUMN isDeleted BOOLEAN,
+ADD COLUMN deleteOn TIMESTAMP;
