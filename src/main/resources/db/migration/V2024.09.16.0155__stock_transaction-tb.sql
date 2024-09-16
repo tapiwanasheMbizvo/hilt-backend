@@ -7,3 +7,4 @@ CREATE TABLE stock_transactions (
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+

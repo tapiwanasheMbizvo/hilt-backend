@@ -1,30 +1,30 @@
 package com.tapiwanashembizvo.hilt.dto;
 
+import com.tapiwanashembizvo.hilt.models.Branch;
 import com.tapiwanashembizvo.hilt.models.Product;
 import com.tapiwanashembizvo.hilt.models.enums.StockTransactionType;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 
 public class StockTransactionDto {
 
+
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
+
     private Product product;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "transaction_type", nullable = false)
+
+    private Branch branch;
+
+
     private StockTransactionType stockTransactionType;
 
-    @Column(name = "quantity", nullable = false)
+
     private Integer quantity;
 
-    @Column(name = "transaction_date", nullable = false)
     private LocalDateTime transactionDate;
-
 
 
     public Integer getTransactionId() {
@@ -49,6 +49,30 @@ public class StockTransactionDto {
 
     public void setTransactionType(StockTransactionType transactionType) {
         this.stockTransactionType = transactionType;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
+    public StockTransactionType getStockTransactionType() {
+        return stockTransactionType;
+    }
+
+    public void setStockTransactionType(StockTransactionType stockTransactionType) {
+        this.stockTransactionType = stockTransactionType;
     }
 
     public Integer getQuantity() {

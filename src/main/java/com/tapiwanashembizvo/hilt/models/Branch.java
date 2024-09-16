@@ -3,6 +3,7 @@ package com.tapiwanashembizvo.hilt.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.ToString;
 
 
 @Entity
@@ -62,5 +63,15 @@ public class Branch {
 
     public void setBusinessUnit(BusinessUnit businessUnit) {
         this.businessUnit = businessUnit;
+    }
+
+    @Override
+    public String toString() {
+        return "Branch{" +
+                "id=" + id +
+                ", branchName='" + branchName + '\'' +
+                ", branchLocation='" + branchLocation + '\'' +
+                ", businessUnit=" + businessUnit +
+                '}';
     }
 }

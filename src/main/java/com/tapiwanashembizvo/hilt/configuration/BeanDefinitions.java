@@ -45,9 +45,23 @@ public class BeanDefinitions {
     public ProductCategoryMapper productCategoryMapper() {
 
         return Mappers.getMapper(ProductCategoryMapper.class);
-    } @Bean
+    }
+
+    @Bean
     public ProductMapper productMapper() {
 
         return Mappers.getMapper(ProductMapper.class);
+    }
+
+    @Bean
+    public StockTransactionMapper stockTransactionMapper() {
+
+        return Mappers.getMapper(StockTransactionMapper.class);
+    }
+
+    @Bean
+    public ProductStockMapper productStockMapper() {
+
+        return Mappers.getMapper(ProductStockMapper.class);
     }
 }

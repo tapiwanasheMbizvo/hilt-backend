@@ -9,16 +9,16 @@ public class BranchDto {
     private String branchName;
     private  String branchLocation;
 
-    private BusinessUnit businessUnit;
+
 
     public BranchDto() {
     }
 
-    public BranchDto(Integer branchId, String branchName, String branchLocation, BusinessUnit businessUnit) {
+    public BranchDto(Integer branchId, String branchName, String branchLocation) {
         this.id = branchId;
         this.branchName = branchName;
         this.branchLocation = branchLocation;
-        this.businessUnit = businessUnit;
+
     }
 
     public Integer getBranchId() {
@@ -45,11 +45,4 @@ public class BranchDto {
         this.branchLocation = branchLocation;
     }
 
-    public BusinessUnit getBusinessUnit() {
-        return businessUnit;
-    }
-
-    public void setBusinessUnit(BusinessUnit businessUnit) {
-        this.businessUnit = businessUnit;
-    }
 }
