@@ -7,15 +7,19 @@ import com.tapiwanashembizvo.hilt.models.ProductStock;
 import com.tapiwanashembizvo.hilt.repositories.ProductStockRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductStockService {
 
     private final ProductStockRepository repository;
     private final ProductStockMapper productStockMapper;
+    private final ProductService productService;
 
-    public ProductStockService(ProductStockRepository repository, ProductStockMapper productStockMapper) {
+    public ProductStockService(ProductStockRepository repository, ProductStockMapper productStockMapper, ProductService productService) {
         this.repository = repository;
         this.productStockMapper = productStockMapper;
+        this.productService = productService;
     }
 
 
@@ -35,12 +39,23 @@ public class ProductStockService {
 
 
     public ProductStockDto increaseCurrentStock(Integer productId, Integer increasingQuantity) {
+        Optional<ProductStock> byProductId = repository.findByProductId(productId);
+        if (byProductId.isPresent()) {
 
-        ProductStock productStock = repository.findByProductId(productId).get();
+            ProductStock productStock = byProductId.get();
+            Number currentQ = productStock.getTotalQuantity();
+            productStock.setTotalQuantity(currentQ.intValue() + increasingQuantity);
+            return productStockMapper.modelToDto(repository.save(productStock));
+        } else {
 
-        Number currentQ = productStock.getTotalQuantity();
-        productStock.setTotalQuantity(currentQ.intValue() + increasingQuantity);
-        return productStockMapper.modelToDto(repository.save(productStock));
+            ProductStock productStockDto = new ProductStock();
+            productStockDto.setProduct(productService.getProduct(productId).get());
+            productStockDto.setTotalQuantity(increasingQuantity);
+
+            return productStockMapper.modelToDto(repository.save(productStockDto));
+        }
+
+
     }
 
 

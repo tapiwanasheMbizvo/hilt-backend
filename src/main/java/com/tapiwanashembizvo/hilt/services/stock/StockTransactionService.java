@@ -2,13 +2,15 @@ package com.tapiwanashembizvo.hilt.services.stock;
 
 import com.tapiwanashembizvo.hilt.dto.StockTransactionDto;
 import com.tapiwanashembizvo.hilt.mappers.StockTransactionMapper;
-import com.tapiwanashembizvo.hilt.models.enums.StockTransactionType;
 import com.tapiwanashembizvo.hilt.repositories.StockTransactionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.tapiwanashembizvo.hilt.models.enums.StockTransactionType.RECEIVE;
+import static com.tapiwanashembizvo.hilt.models.enums.StockTransactionType.SELL;
 
 @Service
 public class StockTransactionService {
@@ -31,7 +33,7 @@ public class StockTransactionService {
     public StockTransactionDto saveStockTransaction(StockTransactionDto stockTransactionDto) {
 
         Integer stockTransactionDtoQuantity =stockTransactionDto.getQuantity();
-        if (stockTransactionDto.getStockTransactionType().equals(StockTransactionType.SELL)) {
+        if (stockTransactionDto.getStockTransactionType().equals(SELL)) {
 
             Integer currentStockValue = productStockService.getCurrentStockValue(stockTransactionDto.getProduct().getId());
             if (currentStockValue > stockTransactionDtoQuantity) {
@@ -41,8 +43,7 @@ public class StockTransactionService {
             } else {
                 throw new RuntimeException("Insufficient Stock to effect Sale");
             }
-            //check if we have enough stock to sell
-        } else if (stockTransactionDto.getStockTransactionType().equals(StockTransactionType.RECEIVE)) {
+        } else if (stockTransactionDto.getStockTransactionType().equals(RECEIVE)) {
 
             productStockService.increaseCurrentStock(stockTransactionDto.getProduct().getId(), stockTransactionDtoQuantity);
         }
@@ -54,8 +55,6 @@ public class StockTransactionService {
     }
 
     public List<StockTransactionDto> getTransactionsForBranch(Integer branchId) {
-
-
         return stockTransactionRepository.findByBranchId(branchId).stream().map(stockTransactionMapper::modelToDto).collect(Collectors.toList());
     }
 }

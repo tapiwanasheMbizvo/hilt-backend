@@ -1,8 +1,5 @@
 package com.tapiwanashembizvo.hilt.dto;
 
-import com.tapiwanashembizvo.hilt.models.BusinessUnit;
-
-
 public class BranchDto {
 
     private  Integer id;

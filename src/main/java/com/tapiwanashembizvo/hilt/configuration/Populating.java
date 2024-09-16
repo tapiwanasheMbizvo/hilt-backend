@@ -32,17 +32,17 @@ public class Populating implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         StockTransactionDto stockTransactionDto = new StockTransactionDto();
-        var product = productRepository.findById(1).get();
-        var branch = branchRepository.findById(1).get();
+        var product = productRepository.findById(2).get();
+        var branch = branchRepository.findById(2).get();
 
         System.out.println("branch::::::::::"+ branch);
         stockTransactionDto.setTransactionDate(LocalDateTime.now());
         stockTransactionDto.setProduct(product);
-        stockTransactionDto.setTransactionType(StockTransactionType.SELL);
-        stockTransactionDto.setQuantity(10);
+        stockTransactionDto.setTransactionType(StockTransactionType.RECEIVE);
+        stockTransactionDto.setQuantity(100);
         stockTransactionDto.setBranch(branch);
 
-        stockTransactionService.saveStockTransaction(stockTransactionDto);
+       // stockTransactionService.saveStockTransaction(stockTransactionDto);
 
 
     }
