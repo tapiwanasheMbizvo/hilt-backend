@@ -5,7 +5,6 @@ import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.mappers.BusinessUnitMapper;
 import com.tapiwanashembizvo.hilt.models.BusinessUnit;
 import com.tapiwanashembizvo.hilt.repositories.BusinessUnitRepository;
-import com.tapiwanashembizvo.hilt.services.core.exception.BusinessNameEmailCombinationExistsException;
 import com.tapiwanashembizvo.hilt.services.messaging.BusinessMessageSender;
 import com.tapiwanashembizvo.hilt.services.messaging.models.BusinessMessage;
 import org.springframework.stereotype.Service;
@@ -72,18 +71,18 @@ public class BusinessActivityService {
                 );
 
         if (byBusinessNameAndBusinessEmail.isPresent()) {
-            var savedBusinessUnit = businessUnitRepository.save(businessUnitMapper.dtoModel(businessUnitDto));
+           return businessUnitMapper.modelToDto(businessUnitRepository.save(businessUnitMapper.dtoModel(businessUnitDto)));
         }
 
         throw new RuntimeException("The name and email combination does not match any BU ");
     }
 
     public void deleteBusinessUnit(Integer id) {
-        Optional<BusinessUnit> optionalBusinessUnit = businessUnitRepository.findById(id);
+        var optionalBusinessUnit = businessUnitRepository.findById(id);
 
         if (optionalBusinessUnit.isPresent()) {
 
-            BusinessUnit businessUnit = optionalBusinessUnit.get();
+            var businessUnit = optionalBusinessUnit.get();
             businessUnit.setDeleted(true);
             businessUnit.setDeleteOn(LocalDateTime.now());
             businessUnitRepository.save(businessUnit);
@@ -102,7 +101,5 @@ public class BusinessActivityService {
             return businessUnitMapper.modelToDto(optionalBusinessUnit.get());
         }
         throw new RuntimeException("BU Not found for id");
-
-
     }
 }

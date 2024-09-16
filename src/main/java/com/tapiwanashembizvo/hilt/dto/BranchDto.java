@@ -1,32 +1,29 @@
 package com.tapiwanashembizvo.hilt.dto;
 
-import com.tapiwanashembizvo.hilt.models.BusinessUnit;
-
-
 public class BranchDto {
 
-    private  Integer branchId;
+    private  Integer id;
     private String branchName;
     private  String branchLocation;
 
-    private BusinessUnit businessUnit;
+
 
     public BranchDto() {
     }
 
-    public BranchDto(Integer branchId, String branchName, String branchLocation, BusinessUnit businessUnit) {
-        this.branchId = branchId;
+    public BranchDto(Integer branchId, String branchName, String branchLocation) {
+        this.id = branchId;
         this.branchName = branchName;
         this.branchLocation = branchLocation;
-        this.businessUnit = businessUnit;
+
     }
 
     public Integer getBranchId() {
-        return branchId;
+        return id;
     }
 
     public void setBranchId(Integer branchId) {
-        this.branchId = branchId;
+        this.id = branchId;
     }
 
     public String getBranchName() {
@@ -45,11 +42,4 @@ public class BranchDto {
         this.branchLocation = branchLocation;
     }
 
-    public BusinessUnit getBusinessUnit() {
-        return businessUnit;
-    }
-
-    public void setBusinessUnit(BusinessUnit businessUnit) {
-        this.businessUnit = businessUnit;
-    }
 }

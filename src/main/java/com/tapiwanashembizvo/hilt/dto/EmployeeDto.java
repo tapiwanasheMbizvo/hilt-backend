@@ -3,7 +3,7 @@ package com.tapiwanashembizvo.hilt.dto;
 import com.tapiwanashembizvo.hilt.models.BusinessUnit;
 
 public class EmployeeDto {
-    private  Integer employeeId;
+    private  Integer id;
     private String employeeNumber;
     private  String employeeFirstName;
     private  String employeeLastName;
@@ -15,7 +15,7 @@ public class EmployeeDto {
     }
 
     public EmployeeDto(Integer employeeId, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, BusinessUnit businessUnit) {
-        this.employeeId = employeeId;
+        this.id = employeeId;
         this.employeeNumber = employeeNumber;
         this.employeeFirstName = employeeFirstName;
         this.employeeLastName = employeeLastName;
@@ -24,12 +24,12 @@ public class EmployeeDto {
         this.businessUnit = businessUnit;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmployeeNumber() {

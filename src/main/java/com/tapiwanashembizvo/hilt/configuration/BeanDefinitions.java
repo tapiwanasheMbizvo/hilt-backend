@@ -1,9 +1,7 @@
 package com.tapiwanashembizvo.hilt.configuration;
 
 
-import com.tapiwanashembizvo.hilt.mappers.BranchMapper;
-import com.tapiwanashembizvo.hilt.mappers.BusinessUnitMapper;
-import com.tapiwanashembizvo.hilt.mappers.EmployeeMapper;
+import com.tapiwanashembizvo.hilt.mappers.*;
 import com.tapiwanashembizvo.hilt.services.messaging.BusinessCoreMessaging;
 import com.tapiwanashembizvo.hilt.services.messaging.impl.SendEmailService;
 import com.tapiwanashembizvo.hilt.services.messaging.impl.SendSMSService;
@@ -41,5 +39,29 @@ public class BeanDefinitions {
     public EmployeeMapper employeeMapper() {
 
         return Mappers.getMapper(EmployeeMapper.class);
+    }
+
+    @Bean
+    public ProductCategoryMapper productCategoryMapper() {
+
+        return Mappers.getMapper(ProductCategoryMapper.class);
+    }
+
+    @Bean
+    public ProductMapper productMapper() {
+
+        return Mappers.getMapper(ProductMapper.class);
+    }
+
+    @Bean
+    public StockTransactionMapper stockTransactionMapper() {
+
+        return Mappers.getMapper(StockTransactionMapper.class);
+    }
+
+    @Bean
+    public ProductStockMapper productStockMapper() {
+
+        return Mappers.getMapper(ProductStockMapper.class);
     }
 }

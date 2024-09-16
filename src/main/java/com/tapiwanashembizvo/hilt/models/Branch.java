@@ -3,6 +3,7 @@ package com.tapiwanashembizvo.hilt.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.ToString;
 
 
 @Entity
@@ -10,7 +11,8 @@ import jakarta.persistence.*;
 public class Branch {
 
     @Id
-    private  Integer branchId;
+    @Column(name = "branch_id")
+    private  Integer id;
     private String branchName;
     private  String branchLocation;
 
@@ -23,7 +25,7 @@ public class Branch {
     }
 
     public Branch(Integer branchId, String branchName, String branchLocation, BusinessUnit businessUnit) {
-        this.branchId = branchId;
+        this.id = branchId;
         this.branchName = branchName;
         this.branchLocation = branchLocation;
         this.businessUnit = businessUnit;
@@ -32,11 +34,11 @@ public class Branch {
 
 
     public Integer getBranchId() {
-        return branchId;
+        return id;
     }
 
     public void setBranchId(Integer branchId) {
-        this.branchId = branchId;
+        this.id = branchId;
     }
 
     public String getBranchName() {
@@ -61,5 +63,15 @@ public class Branch {
 
     public void setBusinessUnit(BusinessUnit businessUnit) {
         this.businessUnit = businessUnit;
+    }
+
+    @Override
+    public String toString() {
+        return "Branch{" +
+                "id=" + id +
+                ", branchName='" + branchName + '\'' +
+                ", branchLocation='" + branchLocation + '\'' +
+                ", businessUnit=" + businessUnit +
+                '}';
     }
 }

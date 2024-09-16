@@ -2,13 +2,14 @@ package com.tapiwanashembizvo.hilt.dto;
 
 import com.tapiwanashembizvo.hilt.models.Branch;
 import com.tapiwanashembizvo.hilt.models.Employee;
+import com.tapiwanashembizvo.hilt.models.ProductCategory;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 public class BusinessUnitDto {
-    private Integer businessId;
+    private Integer id;
     private String businessName;
     private String businessAddress;
     private String businessEmail;
@@ -20,9 +21,10 @@ public class BusinessUnitDto {
     private LocalDateTime deletedOn;
 
     private List<Employee> employees;
+    private List<ProductCategory> productCategories;
 
-    public BusinessUnitDto(Integer businessId, String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<Branch> branches, Boolean isDeleted, LocalDateTime deletedOn, List<Employee> employees) {
-        this.businessId = businessId;
+    public BusinessUnitDto(Integer id, String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<Branch> branches, Boolean isDeleted, LocalDateTime deletedOn, List<Employee> employees, List<ProductCategory> productCategories) {
+        this.id = id;
         this.businessName = businessName;
         this.businessAddress = businessAddress;
         this.businessEmail = businessEmail;
@@ -32,6 +34,7 @@ public class BusinessUnitDto {
         this.isDeleted = isDeleted;
         this.deletedOn = deletedOn;
         this.employees = employees;
+        this.productCategories = productCategories;
     }
 
     public BusinessUnitDto() {
@@ -109,11 +112,19 @@ public class BusinessUnitDto {
         this.deletedOn = deletedOn;
     }
 
-    public Integer getBusinessId() {
-        return businessId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBusinessId(Integer businessId) {
-        this.businessId = businessId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<ProductCategory> getProductCategories() {
+        return productCategories;
+    }
+
+    public void setProductCategories(List<ProductCategory> productCategories) {
+        this.productCategories = productCategories;
     }
 }
