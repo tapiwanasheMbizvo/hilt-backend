@@ -1,7 +1,6 @@
 package com.tapiwanashembizvo.hilt.dto;
 
-import com.tapiwanashembizvo.hilt.models.Branch;
-import com.tapiwanashembizvo.hilt.models.Product;
+
 import com.tapiwanashembizvo.hilt.models.enums.StockTransactionType;
 
 import java.time.LocalDateTime;

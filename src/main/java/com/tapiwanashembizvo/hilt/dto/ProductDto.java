@@ -1,5 +1,6 @@
 package com.tapiwanashembizvo.hilt.dto;
 
+
 public class ProductDto {
 
     private Integer id;
