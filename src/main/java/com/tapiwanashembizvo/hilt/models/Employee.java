@@ -2,7 +2,10 @@ package com.tapiwanashembizvo.hilt.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -23,10 +26,14 @@ public class Employee {
     @JsonBackReference
     private Department department;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<BankingInfo> bankingInfo;
+
     public Employee() {
     }
 
-    public Employee(Integer id, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, Department department) {
+    public Employee(Integer id, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, Department department, List<BankingInfo> bankingInfo) {
         this.id = id;
         this.employeeNumber = employeeNumber;
         this.employeeFirstName = employeeFirstName;
@@ -34,6 +41,7 @@ public class Employee {
         this.employeePhoneNumber = employeePhoneNumber;
         this.employeeEmailAddress = employeeEmailAddress;
         this.department = department;
+        this.bankingInfo = bankingInfo;
     }
 
     public Integer getId() {
@@ -90,5 +98,13 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public List<BankingInfo> getBankingInfo() {
+        return bankingInfo;
+    }
+
+    public void setBankingInfo(List<BankingInfo> bankingInfo) {
+        this.bankingInfo = bankingInfo;
     }
 }

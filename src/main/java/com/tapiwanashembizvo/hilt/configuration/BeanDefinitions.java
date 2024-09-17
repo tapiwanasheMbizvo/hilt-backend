@@ -70,4 +70,10 @@ public class BeanDefinitions {
 
         return Mappers.getMapper(DepartmentMapper.class);
     }
+
+    @Bean
+    public BankInfoMapper bankInfoMapper() {
+
+        return Mappers.getMapper(BankInfoMapper.class);
+    }
 }

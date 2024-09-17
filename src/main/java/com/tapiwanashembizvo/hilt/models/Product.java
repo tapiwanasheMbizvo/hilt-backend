@@ -4,6 +4,7 @@ package com.tapiwanashembizvo.hilt.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "products")
 public class Product {
