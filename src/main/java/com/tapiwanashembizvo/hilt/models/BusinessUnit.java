@@ -31,7 +31,7 @@ public class BusinessUnit {
 
     @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<Employee> employees;
+    private List<Department> departments;
 
     @OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -118,19 +118,19 @@ public class BusinessUnit {
         this.deletedOn = deletedOn;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
     public List<ProductCategory> getProductCategories() {
         return productCategories;
     }
 
     public void setProductCategories(List<ProductCategory> productCategories) {
         this.productCategories = productCategories;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
     }
 }

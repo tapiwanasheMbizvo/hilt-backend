@@ -19,21 +19,21 @@ public class Employee {
     private  String employeeEmailAddress;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "business_unit_id")
+    @JoinColumn(name = "department_id")
     @JsonBackReference
-    private BusinessUnit businessUnit;
+    private Department department;
 
     public Employee() {
     }
 
-    public Employee(Integer id, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, BusinessUnit businessUnit) {
+    public Employee(Integer id, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, Department department) {
         this.id = id;
         this.employeeNumber = employeeNumber;
         this.employeeFirstName = employeeFirstName;
         this.employeeLastName = employeeLastName;
         this.employeePhoneNumber = employeePhoneNumber;
         this.employeeEmailAddress = employeeEmailAddress;
-        this.businessUnit = businessUnit;
+        this.department = department;
     }
 
     public Integer getId() {
@@ -84,11 +84,11 @@ public class Employee {
         this.employeeEmailAddress = employeeEmailAddress;
     }
 
-    public BusinessUnit getBusinessUnit() {
-        return businessUnit;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setBusinessUnit(BusinessUnit businessUnit) {
-        this.businessUnit = businessUnit;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

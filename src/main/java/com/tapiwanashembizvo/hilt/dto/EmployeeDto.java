@@ -9,19 +9,19 @@ public class EmployeeDto {
     private  String employeeLastName;
     private  String employeePhoneNumber;
     private  String employeeEmailAddress;
-    private BusinessUnit businessUnit;
+    private DepartmentDto departmentDto;
 
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Integer employeeId, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, BusinessUnit businessUnit) {
+    public EmployeeDto(Integer employeeId, String employeeNumber, String employeeFirstName, String employeeLastName, String employeePhoneNumber, String employeeEmailAddress, DepartmentDto departmentDto) {
         this.id = employeeId;
         this.employeeNumber = employeeNumber;
         this.employeeFirstName = employeeFirstName;
         this.employeeLastName = employeeLastName;
         this.employeePhoneNumber = employeePhoneNumber;
         this.employeeEmailAddress = employeeEmailAddress;
-        this.businessUnit = businessUnit;
+        this.departmentDto = departmentDto;
     }
 
     public Integer getId() {
@@ -72,11 +72,11 @@ public class EmployeeDto {
         this.employeeEmailAddress = employeeEmailAddress;
     }
 
-    public BusinessUnit getBusinessUnit() {
-        return businessUnit;
+    public DepartmentDto getBusinessUnit() {
+        return departmentDto;
     }
 
-    public void setBusinessUnit(BusinessUnit businessUnit) {
-        this.businessUnit = businessUnit;
+    public void setBusinessUnit(DepartmentDto departmentDto) {
+        this.departmentDto = departmentDto;
     }
 }

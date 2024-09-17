@@ -1,6 +1,7 @@
 package com.tapiwanashembizvo.hilt.dto;
 
 import com.tapiwanashembizvo.hilt.models.Branch;
+import com.tapiwanashembizvo.hilt.models.Department;
 import com.tapiwanashembizvo.hilt.models.Employee;
 import com.tapiwanashembizvo.hilt.models.ProductCategory;
 
@@ -16,14 +17,14 @@ public class BusinessUnitDto {
     private String businessPhone;
     private  String businessWebsite;
 
-    private List<Branch> branches;
+    private List<BranchDto> branches;
     private Boolean isDeleted;
     private LocalDateTime deletedOn;
 
-    private List<Employee> employees;
-    private List<ProductCategory> productCategories;
+    private List<DepartmentDto> departments;
+    private List<ProductCategoryDto> productCategories;
 
-    public BusinessUnitDto(Integer id, String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<Branch> branches, Boolean isDeleted, LocalDateTime deletedOn, List<Employee> employees, List<ProductCategory> productCategories) {
+    public BusinessUnitDto(Integer id, String businessName, String businessAddress, String businessEmail, String businessPhone, String businessWebsite, List<BranchDto> branches, Boolean isDeleted, LocalDateTime deletedOn, List<DepartmentDto> departments, List<ProductCategoryDto> productCategories) {
         this.id = id;
         this.businessName = businessName;
         this.businessAddress = businessAddress;
@@ -33,19 +34,19 @@ public class BusinessUnitDto {
         this.branches = branches;
         this.isDeleted = isDeleted;
         this.deletedOn = deletedOn;
-        this.employees = employees;
+        this.departments = departments;
         this.productCategories = productCategories;
     }
 
     public BusinessUnitDto() {
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public List<DepartmentDto> getDepartments() {
+        return departments;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setDepartments(List<DepartmentDto> departments) {
+        this.departments = departments;
     }
 
     public String getBusinessName() {
@@ -88,11 +89,11 @@ public class BusinessUnitDto {
         this.businessWebsite = businessWebsite;
     }
 
-    public List<Branch> getBranches() {
+    public List<BranchDto> getBranches() {
         return branches;
     }
 
-    public void setBranches(List<Branch> branches) {
+    public void setBranches(List<BranchDto> branches) {
         this.branches = branches;
     }
 
@@ -120,11 +121,11 @@ public class BusinessUnitDto {
         this.id = id;
     }
 
-    public List<ProductCategory> getProductCategories() {
+    public List<ProductCategoryDto> getProductCategories() {
         return productCategories;
     }
 
-    public void setProductCategories(List<ProductCategory> productCategories) {
+    public void setProductCategories(List<ProductCategoryDto> productCategories) {
         this.productCategories = productCategories;
     }
 }

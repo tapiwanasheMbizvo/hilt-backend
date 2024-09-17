@@ -64,4 +64,10 @@ public class BeanDefinitions {
 
         return Mappers.getMapper(ProductStockMapper.class);
     }
+
+    @Bean
+    public DepartmentMapper departmentMapper() {
+
+        return Mappers.getMapper(DepartmentMapper.class);
+    }
 }

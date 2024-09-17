@@ -13,10 +13,10 @@ public class StockTransactionDto {
     private Integer id;
 
 
-    private Product product;
+    private ProductDto product;
 
 
-    private Branch branch;
+    private BranchDto branch;
 
 
     private StockTransactionType stockTransactionType;
@@ -35,11 +35,11 @@ public class StockTransactionDto {
         this.id = transactionId;
     }
 
-    public Product getProduct() {
+    public ProductDto getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductDto product) {
         this.product = product;
     }
 
@@ -59,11 +59,11 @@ public class StockTransactionDto {
         this.id = id;
     }
 
-    public Branch getBranch() {
+    public BranchDto getBranch() {
         return branch;
     }
 
-    public void setBranch(Branch branch) {
+    public void setBranch(BranchDto branch) {
         this.branch = branch;
     }
 

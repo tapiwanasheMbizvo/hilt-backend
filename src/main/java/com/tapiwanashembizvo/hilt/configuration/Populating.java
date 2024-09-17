@@ -2,17 +2,15 @@ package com.tapiwanashembizvo.hilt.configuration;
 
 
 import com.tapiwanashembizvo.hilt.dto.StockTransactionDto;
-import com.tapiwanashembizvo.hilt.models.Branch;
-import com.tapiwanashembizvo.hilt.models.Product;
-import com.tapiwanashembizvo.hilt.models.enums.StockTransactionType;
 import com.tapiwanashembizvo.hilt.repositories.BranchRepository;
 import com.tapiwanashembizvo.hilt.repositories.ProductRepository;
-import com.tapiwanashembizvo.hilt.services.stock.ProductStockService;
 import com.tapiwanashembizvo.hilt.services.stock.StockTransactionService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+
+import static com.tapiwanashembizvo.hilt.models.enums.StockTransactionType.RECEIVE;
 
 @Component
 public class Populating implements CommandLineRunner {
@@ -35,12 +33,12 @@ public class Populating implements CommandLineRunner {
         var product = productRepository.findById(2).get();
         var branch = branchRepository.findById(2).get();
 
-        System.out.println("branch::::::::::"+ branch);
+  /*      System.out.println("branch::::::::::"+ branch);
         stockTransactionDto.setTransactionDate(LocalDateTime.now());
         stockTransactionDto.setProduct(product);
-        stockTransactionDto.setTransactionType(StockTransactionType.RECEIVE);
+        stockTransactionDto.setTransactionType(RECEIVE);
         stockTransactionDto.setQuantity(100);
-        stockTransactionDto.setBranch(branch);
+        stockTransactionDto.setBranch(branch);*/
 
        // stockTransactionService.saveStockTransaction(stockTransactionDto);
 
