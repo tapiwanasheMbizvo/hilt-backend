@@ -3,7 +3,6 @@ package com.tapiwanashembizvo.hilt.controllers;
 
 import com.tapiwanashembizvo.hilt.dto.BusinessUnitDto;
 import com.tapiwanashembizvo.hilt.dto.ProductCategoryDto;
-import com.tapiwanashembizvo.hilt.dto.ProductDto;
 import com.tapiwanashembizvo.hilt.services.ProductCategoryService;
 import com.tapiwanashembizvo.hilt.services.core.BusinessActivityService;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/business-units")
-
+@CrossOrigin(origins = "*")
 public class BusinessUnitController {
 
 

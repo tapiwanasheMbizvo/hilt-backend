@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface BusinessUnitRepository extends JpaRepository<BusinessUnit, Integer> {
 
-    Optional<List<BusinessUnit>> findByBusinessNameAndBusinessEmail(String businessEmail, String businessName);
+    Optional<BusinessUnit> findByBusinessNameAndBusinessEmail(String businessName, String businessEmail);
 }

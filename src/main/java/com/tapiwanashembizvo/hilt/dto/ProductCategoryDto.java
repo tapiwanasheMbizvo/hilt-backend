@@ -1,8 +1,6 @@
 package com.tapiwanashembizvo.hilt.dto;
 
 
-import com.tapiwanashembizvo.hilt.models.Product;
-
 import java.util.List;
 
 public class ProductCategoryDto {
@@ -11,22 +9,22 @@ public class ProductCategoryDto {
     private String categoryName;
     private  String categoryDesc;
 
-    private List<Product> products;
+    private List<ProductDto> products;
     public ProductCategoryDto() {
     }
 
-    public ProductCategoryDto(Integer id, String categoryName, String categoryDesc, List<Product> products) {
+    public ProductCategoryDto(Integer id, String categoryName, String categoryDesc, List<ProductDto> products) {
         this.id = id;
         this.categoryName = categoryName;
         this.categoryDesc = categoryDesc;
         this.products = products;
     }
 
-    public List<Product> getProducts() {
+    public List<ProductDto> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<ProductDto> products) {
         this.products = products;
     }
 

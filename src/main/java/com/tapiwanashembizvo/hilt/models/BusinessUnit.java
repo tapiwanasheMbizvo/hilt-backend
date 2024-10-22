@@ -13,10 +13,13 @@ import java.util.List;
 public class BusinessUnit {
     @Id
     @Column(name = "business_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "business_name")
     private String businessName;
-    private String businessAddress;
+    @Column(name = "business_email")
     private String businessEmail;
+    private String businessAddress;
     private String businessPhone;
     private  String businessWebsite;
 
